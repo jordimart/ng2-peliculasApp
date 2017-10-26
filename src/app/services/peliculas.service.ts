@@ -19,4 +19,12 @@ export class PeliculasService {
       .map(res => res.json());
   }
 
+  getMonthMovies(nowDate:string, monthDate:string ) {
+
+    let url = `${this.urlMoviedb}/discover/movie?primary_release_date.gte=${ nowDate }&primary_release_date.lte=${ monthDate }&api_key=${this.apikey}&language=es&callback=JSONP_CALLBACK`;
+
+    return this.jsonp.get(url)
+      .map(res => res.json());
+  }
+
 }
